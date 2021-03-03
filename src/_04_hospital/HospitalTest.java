@@ -18,6 +18,7 @@ import junit.framework.TestCase;
 public class HospitalTest extends TestCase {
 
 	Hospital testHospital = new Hospital();
+	
 
 	public void testAddDoctor() {
 		testHospital.addDoctor(new GeneralPractitioner());
@@ -31,6 +32,7 @@ public class HospitalTest extends TestCase {
 		testHospital.addPatient(new Patient());
 		testHospital.addPatient(new Patient());
 		assertEquals(3, testHospital.getPatients().size());
+		
 	}
 
 	/* Fix asserts one at a time */
@@ -89,7 +91,7 @@ public class HospitalTest extends TestCase {
 		try {
 			testDoctor.assignPatient(new Patient());
 			assertTrue(false);
-		} catch (DoctorFullException dfe) {
+		} catch (GreaterThan3 dfe) {
 			assertTrue(true);
 		}
 assertTrue(testDoctor.getPatients().size() == 3);
@@ -97,13 +99,36 @@ assertTrue(testDoctor.getPatients().size() == 3);
 
 	public void test8Patients() throws Exception {
 		// TODO: add 3 doctors to hospital
+Hospital hospitalTest= new Hospital();
+Doctor david= new Doctor();
+Doctor tracy= new Doctor();
+Doctor bob= new Doctor();
+hospitalTest.doctors.add(david);
+hospitalTest.doctors.add(tracy);
+hospitalTest.doctors.add(bob);
 
 		// TODO: add 8 patients to hospital
+Patient john = new Patient();
+Patient reagan = new Patient();
+Patient daniel = new Patient();
+Patient jordan = new Patient();
+Patient mckenna = new Patient();
+Patient jessica = new Patient();
+Patient kyah = new Patient();
+Patient natalie = new Patient();
+hospitalTest.patients.add(john);
+hospitalTest.patients.add(reagan);
+hospitalTest.patients.add(daniel);
+hospitalTest.patients.add(jordan);
+hospitalTest.patients.add(mckenna);
+hospitalTest.patients.add(jessica);
+hospitalTest.patients.add(kyah);
+hospitalTest.patients.add(natalie);
 
 		// hospital assigns patients to doctors
-		testHospital.assignPatientsToDoctors();
+		hospitalTest.assignPatientsToDoctors();
 		// hospital.getDoctors shows doctors have 3, 3, 2 patients
-		List<Doctor> testDoctors = testHospital.getDoctors();
+		List<Doctor> testDoctors = hospitalTest.getDoctors();
 		assertEquals(3, testDoctors.get(0).getPatients().size());
 		assertEquals(3, testDoctors.get(1).getPatients().size());
 		assertEquals(2, testDoctors.get(2).getPatients().size());
